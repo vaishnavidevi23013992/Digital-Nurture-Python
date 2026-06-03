@@ -27,6 +27,9 @@ WHERE e.status = 'upcoming'
   AND u.city = e.city
 ORDER BY e.start_date;
 ```
+# Output
+<img width="1608" height="184" alt="image" src="https://github.com/user-attachments/assets/24840fad-1d8b-43d2-b627-825373563e32" />
+
 
 # 2. Top Rated Events
 
@@ -46,6 +49,8 @@ GROUP BY e.event_id, e.title
 HAVING COUNT(*) >= 10
 ORDER BY avg_rating DESC;
 ```
+# Output
+<img width="1608" height="114" alt="image" src="https://github.com/user-attachments/assets/996968da-264a-4ba1-83b2-ce803ad5fb1d" />
 
 ---
 
@@ -65,6 +70,8 @@ WHERE user_id NOT IN (
     WHERE registration_date >= CURDATE() - INTERVAL 90 DAY
 );
 ```
+# Output
+<img width="1891" height="346" alt="image" src="https://github.com/user-attachments/assets/31f0880b-3c75-493a-b431-b7893f6b890a" />
 
 ---
 
@@ -85,6 +92,8 @@ ON e.event_id = s.event_id
 AND TIME(s.start_time) BETWEEN '10:00:00' AND '12:00:00'
 GROUP BY e.event_id, e.title;
 ```
+# Output
+<img width="1606" height="237" alt="image" src="https://github.com/user-attachments/assets/750a6068-1a12-4f59-b432-07ca88c6ed02" />
 
 ---
 
@@ -104,6 +113,8 @@ GROUP BY u.city
 ORDER BY total_registrations DESC
 LIMIT 5;
 ```
+# Output
+<img width="1606" height="234" alt="image" src="https://github.com/user-attachments/assets/1391aea4-50cd-47a0-8e9b-64df3a2959e9" />
 
 ---
 # 6. Event Resource Summary
@@ -124,6 +135,8 @@ FROM Events e
 LEFT JOIN Resources r ON e.event_id = r.event_id
 GROUP BY e.event_id, e.title;
 ```
+# Output
+<img width="1609" height="238" alt="image" src="https://github.com/user-attachments/assets/a30e3e8b-d748-45fc-9531-c5c8504a1693" />
 
 ---
 
@@ -145,6 +158,8 @@ JOIN Users u ON f.user_id = u.user_id
 JOIN Events e ON f.event_id = e.event_id
 WHERE f.rating < 3;
 ```
+# Output
+<img width="1610" height="102" alt="image" src="https://github.com/user-attachments/assets/6deea930-b43e-40e9-be1f-63607d2249f9" />
 
 ---
 
@@ -165,6 +180,8 @@ LEFT JOIN Sessions s ON e.event_id = s.event_id
 WHERE e.status = 'upcoming'
 GROUP BY e.event_id, e.title;
 ```
+# Output
+<img width="1615" height="186" alt="image" src="https://github.com/user-attachments/assets/5098694c-9259-427d-a8e1-a96e20910c26" />
 
 ---
 
@@ -185,6 +202,8 @@ FROM Users u
 JOIN Events e ON u.user_id = e.organizer_id
 GROUP BY u.user_id, u.full_name, e.status;
 ```
+# Output
+<img width="1614" height="239" alt="image" src="https://github.com/user-attachments/assets/e6614c11-17c5-47c4-8db3-7fd50986ba22" />
 
 ---
 
@@ -211,6 +230,8 @@ AND NOT EXISTS (
       WHERE f.event_id = e.event_id
 );
 ```
+# Output
+<img width="1616" height="142" alt="image" src="https://github.com/user-attachments/assets/3b9affb7-d988-447e-ad4a-729c303423a6" />
 
 ---
 
@@ -230,6 +251,8 @@ WHERE registration_date >= CURDATE() - INTERVAL 7 DAY
 GROUP BY registration_date
 ORDER BY registration_date;
 ```
+# Output
+<img width="1615" height="98" alt="image" src="https://github.com/user-attachments/assets/9828d8e6-d1f2-4a00-943b-b57f0a02ef7f" />
 
 ---
 
@@ -257,6 +280,8 @@ HAVING COUNT(s.session_id) = (
     ) x
 );
 ```
+# Output
+<img width="1606" height="134" alt="image" src="https://github.com/user-attachments/assets/55f57354-d7fe-4239-9b3c-140ec7f98636" />
 
 ---
 
@@ -275,6 +300,8 @@ FROM Events e
 JOIN Feedback f ON e.event_id = f.event_id
 GROUP BY e.city;
 ```
+# Output
+<img width="1617" height="185" alt="image" src="https://github.com/user-attachments/assets/0e04514c-42d1-4cf8-bd29-d155663a1654" />
 
 ---
 
@@ -296,6 +323,8 @@ GROUP BY e.event_id, e.title
 ORDER BY total_registrations DESC
 LIMIT 3;
 ```
+# Output
+<img width="1610" height="239" alt="image" src="https://github.com/user-attachments/assets/1931e26c-a03d-40eb-95bf-99d2a6edc74d" />
 
 ---
 
@@ -318,6 +347,8 @@ AND s1.session_id < s2.session_id
 AND s1.start_time < s2.end_time
 AND s1.end_time > s2.start_time;
 ```
+# Output
+<img width="1622" height="107" alt="image" src="https://github.com/user-attachments/assets/484c1dd8-e824-47c9-9aa5-e250f5641759" />
 
 ---
 # 16. Unregistered Active Users
@@ -335,6 +366,8 @@ LEFT JOIN Registrations r ON u.user_id = r.user_id
 WHERE u.registration_date >= CURDATE() - INTERVAL 30 DAY
 AND r.registration_id IS NULL;
 ```
+# Output
+<img width="1617" height="107" alt="image" src="https://github.com/user-attachments/assets/bdc200da-c26d-4756-bc67-efadd3d7bf7c" />
 
 ---
 
@@ -353,6 +386,8 @@ FROM Sessions
 GROUP BY speaker_name
 HAVING COUNT(*) > 1;
 ```
+# Output
+<img width="1616" height="115" alt="image" src="https://github.com/user-attachments/assets/8fc0cb14-393f-41be-b9d7-27dd46385a88" />
 
 ---
 
@@ -371,6 +406,8 @@ FROM Events e
 LEFT JOIN Resources r ON e.event_id = r.event_id
 WHERE r.resource_id IS NULL;
 ```
+# Output
+<img width="1618" height="115" alt="image" src="https://github.com/user-attachments/assets/a0ebc458-9a9b-47c8-981f-aea41415b635" />
 
 ---
 
@@ -393,6 +430,8 @@ LEFT JOIN Feedback f ON e.event_id = f.event_id
 WHERE e.status = 'completed'
 GROUP BY e.event_id, e.title;
 ```
+# Output
+<img width="1612" height="132" alt="image" src="https://github.com/user-attachments/assets/39fdf336-6feb-4d25-871d-446fe37cb710" />
 
 ---
 
@@ -414,6 +453,8 @@ LEFT JOIN Registrations r ON u.user_id = r.user_id
 LEFT JOIN Feedback f ON u.user_id = f.user_id
 GROUP BY u.user_id, u.full_name;
 ```
+# Output
+<img width="1900" height="355" alt="image" src="https://github.com/user-attachments/assets/84ac23df-5c42-4f7c-a846-b38d816bcb1a" />
 
 ---
 
@@ -435,6 +476,8 @@ GROUP BY u.user_id, u.full_name
 ORDER BY total_feedbacks DESC
 LIMIT 5;
 ```
+# Output
+<img width="1611" height="237" alt="image" src="https://github.com/user-attachments/assets/8815933d-41b3-431a-a016-c91245509b16" />
 
 ---
 
@@ -454,6 +497,8 @@ FROM Registrations
 GROUP BY user_id, event_id
 HAVING COUNT(*) > 1;
 ```
+# Output
+<img width="1603" height="113" alt="image" src="https://github.com/user-attachments/assets/7bce5c31-94f3-4f7b-9757-c4eb20ebf8fb" />
 
 ---
 
@@ -473,6 +518,8 @@ WHERE registration_date >= CURDATE() - INTERVAL 12 MONTH
 GROUP BY DATE_FORMAT(registration_date,'%Y-%m')
 ORDER BY month;
 ```
+# Output
+<img width="1619" height="128" alt="image" src="https://github.com/user-attachments/assets/1ce64e8b-9f08-48e0-99b2-6d1258f07fb9" />
 
 ---
 
@@ -500,6 +547,8 @@ FROM Events e
 JOIN Sessions s ON e.event_id = s.event_id
 GROUP BY e.event_id, e.title;
 ```
+# Output
+<img width="1618" height="238" alt="image" src="https://github.com/user-attachments/assets/e8097de7-a236-49e0-93fd-c602f7c4ffc9" />
 
 ---
 
@@ -518,6 +567,8 @@ FROM Events e
 LEFT JOIN Sessions s ON e.event_id = s.event_id
 WHERE s.session_id IS NULL;
 ```
+# Output
+<img width="1612" height="115" alt="image" src="https://github.com/user-attachments/assets/bde2d587-adf0-47fa-a939-5a06f82ffae4" />
 
 ---
 
